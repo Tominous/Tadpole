@@ -210,7 +210,7 @@ bot.command :end do |event, *args|
 			elsif con.count == 2
 				chn = event.bot.channel(con.reverse[con.index(event.channel.id.to_s)].to_i)
 				red = false
-				#event.channel.send_message("Disconnecting... If there is no response after this type `#tadpole end force`")
+				event.channel.send_message("Disconnecting... If there is no response after this type `#tadpole end force`")
 				if not chn == nil	
 					if event.channel.private?
 						chn.send_message(HTMLEntities.new.decode("&#x1F4DE;")+" *#{event.author.name} Disconnected.* `Connection has ended.`")
@@ -225,7 +225,7 @@ bot.command :end do |event, *args|
 				holderval = IO.write("data/tadpolecs",tpc.to_json)
 			else
 				red = false
-				#event.channel.send_message("Disconnecting... If there is no response after this type `#tadpole end force`")
+				event.channel.send_message("Disconnecting... If there is no response after this type `#tadpole end force`")
 				ccon = con
 				con.each do |chn|
 					chn2 = event.bot.channel(chn)
@@ -343,7 +343,7 @@ bot.command :botinfo do |event, *args|
   ls = bot.servers.values.each {|s| if s.large; lsc+=1; end }
   ss = bot.servers.count - lsc
   event << "```diff"
-  event << "! Bot Info"
+  event << "! Bot Information"
   event << "-   #{bot.servers.count} servers"
   event << "+     #{lsc} large servers"
   event << "+     #{ss} small servers"
